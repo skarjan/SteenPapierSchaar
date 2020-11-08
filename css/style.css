@@ -1,0 +1,67 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+body {
+  background: #0197f6;
+}
+.hoofd-logo {
+text-align: center;
+font-family: 'Goldman', cursive;
+text-transform: uppercase;
+font-size: 40px;
+margin-top: 12px;
+}
+.app-container {
+  border-right: solid white;
+  width: 200px;
+
+}
+.scorebord {
+  display:inline;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: justify;
+}
+.head-houder {
+  display: flex;
+  border-radius: 2px;
+  background: #093145;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 675px;
+  height: 205px;
+}
+.sub-container{
+  flex: 1;
+  padding: 20px
+}
+.std-knop {
+  background-color: #093145;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 300;
+  text-align: center;
+  transition: all 0.2s;
+}
+.std-knop:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+@media all and (max-width:30em){
+  .std-knop {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
+.std-tekst {
+  color: #FFFFFF;
+  /* color: #131516; */
+  /* padding: 20px; */
+}
