@@ -18,3 +18,5 @@ Speel SteenPapierSchaar (SPS) en kijk of je van de "AI" kan winnen.
  
  Met de release van 0.6 kan er op een simpele manier gespeeld worden. 
  Ik ben bezig om meer functies toe te voegen. 
+
+!(https://github.com/skarjan/SteenPapierSchaar/blob/main/img/bijv.png)
