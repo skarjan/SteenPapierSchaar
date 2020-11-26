@@ -1,97 +1,84 @@
-var getKnop = document.getElementById("testKnop"); // pak knop0 in html
-var getKnopSteen = document.getElementById("steen-knop");
-var getKnopPapier = document.getElementById("papier-knop");
-var getKnopSchaar = document.getElementById("schaar-knop");
+  const bericht = document.querySelector('.bericht');
+  const score = document.querySelector('.score');
+  const buttons = document.querySelectorAll('button');
+  const winnaarScores = [0,0];
 
-// het weergeven van 0 op de score
-var ownScore = document.getElementById("eigenScore");
-var npcScore = document.getElementById("pcScore");
-ownScore.innerHTML = 0;
-npcScore.innerHTML = 0;
+  //event listeners toevoegen aan alle knoppen
+  for ( let i = 0 ; i < buttons.length ; i++){
+      buttons[i].addEventListener('click', playGame);
+  }
 
+  function playGame(e){
+      //invoer van speler koppelen aan de betreffende knoppen
+      let spelerInvoer = e.target.innerText;
+      // Functie berekend een willekeurige getal tussen 0 en 1
+      let cpuInvoer = Math.random();
 
+      //als waarde < 34, CPU selects Steen <= Steen en de rest schaar
+      if (cpuInvoer < .34){
+          cpuInvoer = 'Steen';
+      } else if (cpuInvoer <= .67){
+          cpuInvoer = 'Papier';
+      } else {
+          cpuInvoer = 'Schaar';
+      }
 
-// functie voor klik op de waarde boven
-// getKnop.onclick = mijnKlikFunctie;
-getKnopSteen.onclick = mijnKlikFunctie;
-getKnopPapier.onclick = mijnKlikFunctie;
-getKnopSchaar.onclick = mijnKlikFunctie;
+      // Functie om de invoeren te vergelijken en winnaar te bepalen.
+      let result = checkWinner(spelerInvoer, cpuInvoer);
 
+      //scoren weergeven in DOM
+      if (result === 'Speler'){
+          result += ' wint!!';
+          //score bijwerken
+          winnaarScores[0]++;
+      }
 
-function mijnKlikFunctie() {
-  var invoer = this.value;
-  var t = new Date(); // datum object aanmaken
-  var tS = t.getMilliseconds(); // neem Millisecs van datum obj
-  var resVeld0 = document.getElementById("displayVeld0")
-  var resVeld1 = document.getElementById("displayVeld1")
-  var npc = "";
-  var ownScore = document.getElementById("eigenScore");
-  var npcScore = document.getElementById("pcScore");
+      if (result === 'CPU'){
+          result += ' wint!!';
+          winnaarScores[1]++;
+      }
 
-// logica voor de AI
-if (tS < 100) {
-  npc = "steen";
-} else if (tS > 100 && tS < 200) {
-     npc = "papier";
-} else if (tS > 200 && tS < 300) {
-     npc = "schaar";
-} else if (tS < 300 && tS < 400) {
-     npc = "steen";
-} else if (tS > 400 && tS < 500) {
-    npc = "papier";
-} else if (tS > 500 && tS < 600) {
-    npc = "schaar";
-} else if (tS > 600 && tS < 700) {
-   npc = "steen";
-} else if (tS < 700 && tS < 800) {
-   npc = "papier";
-} else if (tS > 800 && tS < 900) {
-   npc = "schaar";
-} else if (tS > 900 && tS < 1001) {
-   npc = "steen";
-} else {
-  npc = "papier";
-};
+      if (result === 'Gelijkspel'){
+          result += '. Helaas...'
+      }
 
-// gelijkspel logica geen punten
-// var gelijkspel = invoer.localeCompare(npc);
-// if (gelijkspel == 0) {
-// resVeld1.innerHTML = "gelijkspel";
-// console.log("gelijkspel");
-//
-//
-// } else {
-// resVeld1.innerHTML = "GEEN gelijkspel"  ;
-// };
+      //score weergeven in de betreffende score div
+      score.innerHTML = 'Speler: [ ' + winnaarScores[0]+ ' ] CPU: [ ' + winnaarScores[1] + ' ]';
 
-// steen
-if (npc == "steen" && invoer == "schaar") {
-  npcScore.innerHTML++;
-resVeld1.innerHTML = "verloren"  ;
-} else if (npc == "steen" && invoer == "papier") {
-  ownScore.innerHTML++;
-  resVeld1.innerHTML = "gewonnen"  ;
-// papier
-} else if (npc == "papier" && invoer == "schaar") {
-  ownScore.innerHTML++;
-resVeld1.innerHTML = "gewonnen"  ;
-} else if (npc == "papier" && invoer == "steen") {
-  npcScore.innerHTML++;
-  resVeld1.innerHTML = "verloren"  ;
-// schaar
-} else if (npc == "schaar" && invoer == "steen") {
-  ownScore.innerHTML++;
-resVeld1.innerHTML = "gewonnen"  ;
-} else if (npc == "schaar" && invoer == "papier") {
-  npcScore.innerHTML++;
-  resVeld1.innerHTML = "verloren"  ;
-}
-else {
-  resVeld1.innerHTML = "gelijkspel";
-}
+      //weergeven wat speler en CPU hebben ingevoerd
+      messenger('Speler: <strong>' + spelerInvoer + '<br></strong> CPU: <strong>' + cpuInvoer + '</strong><br>' + result);
+  }
 
-//debuggerij
-console.log(npc, invoer);
-  resVeld0.innerHTML = "jij: " + invoer + " vs CPU: " + npc; // tekst voor nieuwe element
-};
-  // einde functie
+  function messenger(selectionbericht){
+      bericht.innerHTML = selectionbericht;
+  }
+
+  function checkWinner(Speler, CPU){
+      if (Speler === CPU){
+          return 'Gelijkspel';
+      }
+
+      if (Speler === 'Steen'){
+          if(CPU === 'Papier'){
+              return 'CPU';
+          } else {
+              return 'Speler';
+          }
+      }
+
+      if (Speler === 'Papier'){
+          if (CPU === 'Schaar'){
+              return 'CPU';
+          } else {
+              return 'Speler';
+          }
+      }
+
+      if (Speler === 'Schaar'){
+          if (CPU === 'Steen'){
+              return 'CPU';
+          } else {
+              return 'Speler';
+          }
+      }
+  }
