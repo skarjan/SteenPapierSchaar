@@ -1,4 +1,4 @@
-###LANGVERWACHTE VERSIE 0.7 NU BESCHIKBAAR!!!!
+## LANGVERWACHTE VERSIE 0.7 NU BESCHIKBAAR!!!!
 
 # Versie 0.7 notes
 - Hele code opnieuw geschreven zodat ik makkelijker functies kan toevoegen. 
