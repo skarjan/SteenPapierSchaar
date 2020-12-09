@@ -7,8 +7,8 @@
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
   // Voor ontwikkeldoeleinden, verwijder voor productie
-  spelerNaamDisplay = "Arjan";
-  computerNaamDisplay = "Computernaam";
+  // spelerNaamDisplay = "Arjan";
+  // computerNaamDisplay = "Computernaam";
 
 
 
@@ -18,13 +18,14 @@
   }
 
   function playGame(e)  {
-
-      if (computerNaamDisplay == "CPU: "){
-      computerNaamDisplay = voerNaamIn();
-    }
+     // Vragen om naam als deze niet al is ingesteld.
       if (spelerNaamDisplay == "Spelernaam:") {
-      spelerNaamDisplay = voerNaamIn();
+      spelerNaamDisplay = voerNaamSpelerIn();
     }
+    // Vragen om computer-naam als deze niet al is ingesteld.
+     if (computerNaamDisplay == "CPU: ") {
+      computerNaamDisplay = voerNaamComputerIn();
+   }
       //invoer van speler koppelen aan de betreffende knoppen
       let spelerInvoer = e.target.innerText;
       // Functie berekend een willekeurige getal tussen 0 en 1
@@ -68,9 +69,14 @@
        + ": " + cpuInvoer + " " + result);
   }
 
-  function voerNaamIn (promptAntwoord) {
-    promptAntwoord = prompt("Naam?, COMPUTER")
-    return promptAntwoord;
+  function voerNaamSpelerIn (promptAntwoordSpeler) {
+    promptAntwoordSpeler = prompt("Wat is je naam?", "Vul hier je naam in")
+    return promptAntwoordSpeler;
+  }
+
+  function voerNaamComputerIn (promptAntwoordComputer) {
+    promptAntwoordComputer = prompt("Hoe moet de tegenstander heten?", "Vul hier een naam in")
+    return promptAntwoordComputer;
   }
 
   function messenger(selectionbericht){
