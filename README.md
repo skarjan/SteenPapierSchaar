@@ -1,3 +1,9 @@
+## 0.7.1 Aangepaste Namen Update
+
+# Notities 
+
+Functie toegevoegd om de naam van jezelf en de computer te wijzigen. 
+
 ## LANGVERWACHTE VERSIE 0.7 NU BESCHIKBAAR!!!!
 
 # Versie 0.7 notes
