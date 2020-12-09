@@ -1,12 +1,12 @@
-## 0.7.1 Aangepaste Namen Update
+# 0.7.1 Aangepaste Namen Update
 
-# Notities 
+## Notities 
 
-Functie toegevoegd om de naam van jezelf en de computer te wijzigen. 
+- Functie toegevoegd om de naam van jezelf en de computer te wijzigen. 
 
-## LANGVERWACHTE VERSIE 0.7 NU BESCHIKBAAR!!!!
+# LANGVERWACHTE VERSIE 0.7 NU BESCHIKBAAR!!!!
 
-# Versie 0.7 notes
+## Versie 0.7 notes
 - Hele code opnieuw geschreven zodat ik makkelijker functies kan toevoegen. 
 - Programma loopt nu van het opvangen van de knoppen tot en met het bijwerken van de scores. 
 Daartussen in heb ik een aantal functies geplaatst. Deze worden aangeroepen op het moment dat 
