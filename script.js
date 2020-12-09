@@ -7,8 +7,8 @@
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
   // Voor ontwikkeldoeleinden, verwijder voor productie
-  spelerNaamDisplay = "Arjan";
-  computerNaamDisplay = "Computernaam";
+  // spelerNaamDisplay = "Arjan";
+  // computerNaamDisplay = "Computernaam";
 
 
 
