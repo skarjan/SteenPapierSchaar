@@ -14,7 +14,6 @@
   spelerNaamDisplay = "Arjan";
   computerNaamDisplay = "Computernaam";
 
-
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
       buttons[i].addEventListener('click', playGame);
@@ -26,11 +25,7 @@
 //   console.log("test");
 // }
 
-
-
   function playGame(e)  {
-    // update score
-
     //Verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
     // wordt pas ná de eerste keer uitgevoerd
     berichtInvoerID.classList.remove("bg-success", "text-white");
@@ -50,14 +45,14 @@
       // Functie berekend een willekeurige getal tussen 0 en 1
       let cpuInvoer = Math.random();
 
-      //als waarde < 34, CPU selects Steen <= Steen en de rest schaar
+      // verdeling van CPU invoer adh van random() resultaat
       if (cpuInvoer < .20){
           cpuInvoer = 'Steen';
       } else if (cpuInvoer <= .40){
           cpuInvoer = 'Papier';
         } else if (cpuInvoer <= .60){
             cpuInvoer = 'Hagedis';
-        } else if (cpuInvoer <= .85){
+        } else if (cpuInvoer <= .80){
             cpuInvoer = 'Spock';
         } else {
           cpuInvoer = 'Schaar';
@@ -66,11 +61,10 @@
       // Functie om de invoeren te vergelijken en winnaar te bepalen.
       let result = checkWinner(spelerInvoer, cpuInvoer);
 
-      //scoren weergeven in DOM
+      //Hoe en welke uitslage weer te geven
       if (result === spelerNaamDisplay){
           berichtInvoerID.classList.add("p-3", "mb-2", "bg-success", "text-white");
           result += ' is de winnaar';
-          //score bijwerken
           winnaarScores[0]++;
       }
 
@@ -91,23 +85,20 @@
 
       let realScore = (winnaarScores[0] - winnaarScores[1])*3;
 
+      // totaalscore berekenen en weergeven
       if (realScore  <= -1) {
         realScoreID.innerHTML = "Score: 0";
       } else {
         realScoreID.innerHTML = "Score: "+realScore;
       }
 
-
-
-
-
       //weergeven wat speler en CPU hebben ingevoerd
-
       messenger(spelerNaamDisplay + ": "
       + spelerInvoer + " " + computerNaamDisplay
       + ": " + cpuInvoer + " ", result);
-}
+} // einde van de play game functies
 
+//  begin functies die aangeroepen worden in playGame()
 
   function voerNaamSpelerIn (promptAntwoordSpeler) {
     promptAntwoordSpeler = prompt("Wat is je naam?", "Vul hier je naam in")
