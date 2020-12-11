@@ -13,8 +13,8 @@
   let spelerInvoer = "";
 
   // Voor ontwikkeldoeleinden, verwijder voordat je live gaat 8-)
-  spelerNaamDisplay = "Arjan";
-  computerNaamDisplay = "Computernaam";
+  // spelerNaamDisplay = "Arjan";
+  // computerNaamDisplay = "Computernaam";
 
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
