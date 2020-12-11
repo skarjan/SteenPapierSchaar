@@ -36,7 +36,7 @@ console.log(e.type)
     }
 }
 
-// wat te doen bij welke toetsaanslag
+// wat te doen bij welke toetsaanslag.
 function determineKeyAction (e) {
   if (e.keyCode === 82) {
    document.getElementById("steen-knop").click();
