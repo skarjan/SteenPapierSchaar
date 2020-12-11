@@ -83,7 +83,7 @@ function determineClickAction (e) {
      if (computerNaamDisplay == "CPU: ") {
       computerNaamDisplay = voerNaamComputerIn();
    }
-      // invoer van speler koppelen aan de betreffende knoppen
+      // invoer van speler koppelen aan de betreffende knoppen/toetsen
       if (e.type == 'click') {
       spelerInvoer = e.target.value;
     } else if (e.type == 'keydown') {
