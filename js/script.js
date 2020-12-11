@@ -13,8 +13,8 @@
   let spelerInvoer = "";
 
   // Voor ontwikkeldoeleinden, verwijder voordat je live gaat 8-)
-  // spelerNaamDisplay = "Arjan";
-  // computerNaamDisplay = "Computernaam";
+  spelerNaamDisplay = "Arjan";
+  computerNaamDisplay = "Computernaam";
 
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
@@ -64,7 +64,7 @@ function determineClickAction (e) {
 } // einde functie
 
   function playGame(e)  {
-    console.log(e.target);
+    
     // pre-game routine: klasses verwijderen van de resultaten,
     // kijken of er al namen zijn ingesteld, vastleggen van de speler invoer,
     // generen van een cpu invoer. Daarna start de game
