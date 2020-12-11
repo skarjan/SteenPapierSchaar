@@ -1,4 +1,5 @@
   //  Variablen waar alle functies bij kunnen.
+  const berichtInvoer = document.querySelector('.berichtInvoer');
   const bericht = document.querySelector('.bericht');
   const score = document.querySelector('.score');
   const buttons = document.querySelectorAll('button');
@@ -7,8 +8,8 @@
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
   // Voor ontwikkeldoeleinden, verwijder voor productie
-  // spelerNaamDisplay = "Arjan";
-  // computerNaamDisplay = "Computernaam";
+  spelerNaamDisplay = "Arjan";
+  computerNaamDisplay = "Computernaam";
 
 
 
@@ -64,10 +65,12 @@
       + ": " + computerNaamDisplay + " " + winnaarScores[1];
 
       //weergeven wat speler en CPU hebben ingevoerd
+
       messenger(spelerNaamDisplay + ": "
-       + spelerInvoer + " " + computerNaamDisplay
-       + ": " + cpuInvoer + " " + result);
-  }
+      + spelerInvoer + " " + computerNaamDisplay
+      + ": " + cpuInvoer + " ", result);
+}
+
 
   function voerNaamSpelerIn (promptAntwoordSpeler) {
     promptAntwoordSpeler = prompt("Wat is je naam?", "Vul hier je naam in")
@@ -79,8 +82,9 @@
     return promptAntwoordComputer;
   }
 
-  function messenger(selectionbericht){
-      bericht.innerHTML = selectionbericht;
+  function messenger(uitslag, invoer){
+      bericht.innerHTML = uitslag;
+      berichtInvoer.innerHTML = invoer;
   }
 
   function checkWinner(Speler, CPU){
