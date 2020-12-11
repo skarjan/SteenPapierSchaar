@@ -7,11 +7,11 @@
   let spelerNaamDisplay = document.getElementById("spelerNaam").innerHTML;
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
-  // Voor ontwikkeldoeleinden, verwijder voor productie
-  // spelerNaamDisplay = "Arjan";
-  // computerNaamDisplay = "Computernaam";
+  // Voor ontwikkeldoeleinden, verwijder voordat je live gaat 8-)
+  spelerNaamDisplay = "Arjan";
+  computerNaamDisplay = "Computernaam";
 
-  // berichtInvoerID
+  // uitslag word gekoppeld aan een html element om weer te geven
   let berichtInvoerID = document.getElementById("berichtInvoerID");
 
   //event listeners toevoegen aan invoer knoppen
@@ -54,7 +54,7 @@ function fn () {
           cpuInvoer = 'Papier';
         } else if (cpuInvoer <= .60){
             cpuInvoer = 'Hagedis';
-        } else if (cpuInvoer <= .80){
+        } else if (cpuInvoer <= .85){
             cpuInvoer = 'Spock';
         } else {
           cpuInvoer = 'Schaar';
