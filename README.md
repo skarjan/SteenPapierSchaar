@@ -1,3 +1,8 @@
+# 0.8.5 Keyboard supporrt added
+
+See commits for more info. 
+
+
 # Version 0.8 HUGE UPDATE
 ![Voorbeeld van nieuwe SPS](https://github.com/skarjan/SteenPapierSchaar/blob/main/img/bijv2.png)
 
