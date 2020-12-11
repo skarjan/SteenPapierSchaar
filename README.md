@@ -4,6 +4,8 @@
 
 Complete layout overhaul.
 
+![Voorbeeld van nieuwe SPS](https://github.com/skarjan/SteenPapierSchaar/blob/main/img/bijv.png)
+
 # 0.7.1 Aangepaste Namen Update
 
 ## Notities 
