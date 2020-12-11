@@ -23,7 +23,6 @@
   // toetsaanslagen opvangen
   document.addEventListener('keydown', captureEvent);
 
-
 // vangt click en keydown events op
 function captureEvent (e) {
 console.log(e.type)
@@ -113,12 +112,14 @@ function determineClickAction (e) {
       //Hoe en welke uitslage weer te geven
       if (result === spelerNaamDisplay){
           berichtInvoerID.classList.add("bg-success", "text-white", 'animate__animated', 'animate__pulse');
+          berichtInvoerID.addEventListener('animationend', removeAnimation);
           result += ' is de winnaar';
           winnaarScores[0]++;
       }
 
       if (result === computerNaamDisplay){
           berichtInvoerID.classList.add("bg-danger", "text-white", 'animate__animated', 'animate__headShake');
+          berichtInvoerID.addEventListener('animationend', removeAnimation);
           result += ' is de winnaar';
           winnaarScores[1]++;
       }
@@ -167,7 +168,6 @@ function determineClickAction (e) {
 
   function checkWinner(Speler, CPU){
       if (Speler === CPU){
-
           return 'Gelijkspel';
       }
 
@@ -209,3 +209,8 @@ function determineClickAction (e) {
           }
       }
   } // einde functie
+
+// function om de animaties te verwijderen bij het einde van een animatie
+function removeAnimation (e) {
+  berichtInvoerID.classList.remove('animate__animated', 'animate__headShake', 'animate__pulse');
+}
