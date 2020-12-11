@@ -1,10 +1,18 @@
+# Version 0.8 HUGE UPDATE
+![Voorbeeld van nieuwe SPS](https://github.com/skarjan/SteenPapierSchaar/blob/main/img/bijv2.png)
+
+Like you can see the last update was huge. The game has changed dramatically from it's first inception. 
+I also added the logice and function of two more inputs; lizzard and spock.
+
+
+
 # 0.7.2 TBD Update (Layout OVERHAUL)
 
 ## Notes
 
 Complete layout overhaul.
 
-![Voorbeeld van nieuwe SPS](https://github.com/skarjan/SteenPapierSchaar/blob/main/img/bijv.png)
+
 
 # 0.7.1 Aangepaste Namen Update
 
