@@ -1,4 +1,5 @@
   //  Variablen waar alle functies bij kunnen.
+  const berichtInvoer = document.querySelector('.berichtInvoer');
   const bericht = document.querySelector('.bericht');
   const score = document.querySelector('.score');
   const buttons = document.querySelectorAll('button');
@@ -7,17 +8,32 @@
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
   // Voor ontwikkeldoeleinden, verwijder voor productie
-  // spelerNaamDisplay = "Arjan";
-  // computerNaamDisplay = "Computernaam";
+  spelerNaamDisplay = "Arjan";
+  computerNaamDisplay = "Computernaam";
 
-
+  // berichtInvoerID
+  let berichtInvoerID = document.getElementById("berichtInvoerID");
 
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
       buttons[i].addEventListener('click', playGame);
   }
+  // keyboard input control
+document.addEventListener('keydown', fn)
+// keydown functie
+function fn () {
+  console.log("test");
+}
+
+
 
   function playGame(e)  {
+    //Verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
+    // wordt pas ná de eerste keer uitgevoerd
+    berichtInvoerID.classList.remove("bg-success", "text-white");
+    berichtInvoerID.classList.remove("bg-info", "text-white");
+    berichtInvoerID.classList.remove("bg-danger", "text-white");
+
      // Vragen om naam als deze niet al is ingesteld.
       if (spelerNaamDisplay == "Spelernaam:") {
       spelerNaamDisplay = voerNaamSpelerIn();
@@ -45,18 +61,21 @@
 
       //scoren weergeven in DOM
       if (result === spelerNaamDisplay){
-          result += ' wint!!';
+          berichtInvoerID.classList.add("p-3", "mb-2", "bg-success", "text-white");
+          result += ' is de winnaar';
           //score bijwerken
           winnaarScores[0]++;
       }
 
       if (result === computerNaamDisplay){
-          result += ' wint!!';
+          berichtInvoerID.classList.add("p-3", "mb-2", "bg-danger", "text-white");
+          result += ' is de winnaar';
           winnaarScores[1]++;
       }
 
       if (result === 'Gelijkspel'){
-          result += '. Helaas...'
+          berichtInvoerID.classList.add("p-3", "mb-2", "bg-info", "text-white");
+          result += ', er is geen winnaar'
       }
 
       //score weergeven in de betreffende score div
@@ -64,10 +83,12 @@
       + ": " + computerNaamDisplay + " " + winnaarScores[1];
 
       //weergeven wat speler en CPU hebben ingevoerd
+
       messenger(spelerNaamDisplay + ": "
-       + spelerInvoer + " " + computerNaamDisplay
-       + ": " + cpuInvoer + " " + result);
-  }
+      + spelerInvoer + " " + computerNaamDisplay
+      + ": " + cpuInvoer + " ", result);
+}
+
 
   function voerNaamSpelerIn (promptAntwoordSpeler) {
     promptAntwoordSpeler = prompt("Wat is je naam?", "Vul hier je naam in")
@@ -79,12 +100,14 @@
     return promptAntwoordComputer;
   }
 
-  function messenger(selectionbericht){
-      bericht.innerHTML = selectionbericht;
+  function messenger(uitslag, invoer){
+      bericht.innerHTML = uitslag;
+      berichtInvoer.innerHTML = invoer;
   }
 
   function checkWinner(Speler, CPU){
       if (Speler === CPU){
+
           return 'Gelijkspel';
       }
 
