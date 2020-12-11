@@ -25,7 +25,6 @@
 
 // vangt click en keydown events op
 function captureEvent (e) {
-console.log(e.type)
     if (e.type == "click"){
       determineClickAction(e);
     } else if (e.type == "keydown") {
@@ -57,6 +56,8 @@ function determineClickAction (e) {
       buttonValue == "papier" || buttonValue == "spock" ||
       buttonValue == "hagedis") {
     playGame(e);
+  } else if (buttonValue == "thema") {
+    console.log("theme succes");
   } else {
     return alert("Dit gaat fout...");
   }
