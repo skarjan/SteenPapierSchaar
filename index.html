@@ -6,7 +6,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <title>SPSL&S 0.8</title>
+    <title>SPSL&S 0.8.5 added keyboard support</title>
 
 </head>
 
@@ -16,7 +16,11 @@
 <div class="container">
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light">
  <div class="container-fluid">
-  <a class="navbar-brand" href="#">Steen, papier, schaar, hagedis en Spock.</a>
+  <a class="navbar-brand" href="#">Steen, papier, schaar, hagedis en Spock</a>
+  <form class="form-inline">
+    <button class="btn btn-outline-success" type="button">thema</button>
+    <button class="btn btn btn-outline-secondary" type="button">naam wijzigen</button>
+  </form>
  </div>
 </nav>
 </div>
@@ -35,17 +39,17 @@
       </div>
       <div class="card-body">
       <div class="card-title">
-        <h4 class="bericht">Kies hieronder je invoer om te beginnen.</h4>
+        <h4 class="bericht">Kies hieronder je invoer om te beginnen</h4>
       </div>
       <div class="card-body">
         <h4 id="berichtInvoerID" class="berichtInvoer p-3 mb-2">Succes!</h4>
       </div>
       <div class="card-body text-center">
-      <button  class="btn-primary btn-lg" value="steen" type="button" id="steen-knop" name="knop0">Steen</button>
-      <button class="btn-primary btn-lg" value="Papier" type="button" id="Papier-knop" name="knop1">Papier</button>
-      <button  class="btn-primary btn-lg" value="schaar" type="button" id="schaar-knop" name="knop2">Schaar</button>
-      <button  class="btn-primary btn-lg" value="hagedis" type="button" id="hagedis-knop" name="knop2">Hagedis</button>
-      <button  class="btn-primary btn-lg" value="spock" type="button" id="spock-knop" name="knop2">Spock</button>
+      <button  class="btn-primary btn-lg" value="steen" type="button" id="steen-knop" name="knop0">Steen [R]</button>
+      <button class="btn-primary btn-lg" value="papier" type="button" id="papier-knop" name="knop1">Papier [P]</button>
+      <button  class="btn-primary btn-lg" value="schaar" type="button" id="schaar-knop" name="knop2">Schaar [S]</button>
+      <button  class="btn-primary btn-lg" value="hagedis" type="button" id="hagedis-knop" name="knop2">Hagedis [H]</button>
+      <button  class="btn-primary btn-lg" value="spock" type="button" id="spock-knop" name="knop2">Spock [O]</button>
     </div>
     </div>
     </div>

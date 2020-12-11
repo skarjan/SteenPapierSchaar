@@ -9,76 +9,126 @@
   // uitslag word gekoppeld aan een html element om weer te geven
   let berichtInvoerID = document.getElementById("berichtInvoerID");
   let realScoreID = document.getElementById("realScoreID");
+  // speler invoer
+  let spelerInvoer = "";
 
   // Voor ontwikkeldoeleinden, verwijder voordat je live gaat 8-)
-  spelerNaamDisplay = "Arjan";
-  computerNaamDisplay = "Computernaam";
+  // spelerNaamDisplay = "Arjan";
+  // computerNaamDisplay = "Computernaam";
 
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
-      buttons[i].addEventListener('click', playGame);
+      buttons[i].addEventListener('click', captureEvent);
   }
-//   // keyboard input control
-// document.addEventListener('keydown', fn)
-// // keydown functie
-// function fn () {
-//   console.log("test");
-// }
+  // toetsaanslagen opvangen
+  document.addEventListener('keydown', captureEvent);
+
+
+// vangt click en keydown events op
+function captureEvent (e) {
+console.log(e.type)
+    if (e.type == "click"){
+      determineClickAction(e);
+    } else if (e.type == "keydown") {
+      determineKeyAction(e);
+    } else {
+        return alert("Nog niet goed ingesteld");
+    }
+}
+
+// wat te doen bij welke toetsaanslag
+function determineKeyAction (e) {
+  if (e.keyCode === 82) {
+   document.getElementById("steen-knop").click();
+} else if (e.keyCode === 80) {
+   document.getElementById("papier-knop").click();
+} else if (e.keyCode === 83) {
+   document.getElementById("schaar-knop").click();
+} else if (e.keyCode === 72) {
+   document.getElementById("hagedis-knop").click();
+} else if (e.keyCode === 79) {
+   document.getElementById("spock-knop").click();
+ }
+}//einde functie
+
+// wat te doen bij welke klik
+function determineClickAction (e) {
+  let buttonValue = e.target.value;
+  if (buttonValue == "steen" || buttonValue == "schaar" ||
+      buttonValue == "papier" || buttonValue == "spock" ||
+      buttonValue == "hagedis") {
+    playGame(e);
+  } else {
+    return alert("Dit gaat fout...");
+  }
+} // einde functie
 
   function playGame(e)  {
-    //Verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
+    console.log(e.target);
+    // pre-game routine: klasses verwijderen van de resultaten,
+    // kijken of er al namen zijn ingesteld, vastleggen van de speler invoer,
+    // generen van een cpu invoer. Daarna start de game
+
+    // verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
     // wordt pas ná de eerste keer uitgevoerd
     berichtInvoerID.classList.remove("bg-success", "text-white");
     berichtInvoerID.classList.remove("bg-info");
     berichtInvoerID.classList.remove("bg-danger", "text-white");
 
-     // Vragen om naam als deze niet al is ingesteld.
+     // kijken of er al namen zijn ingesteld
       if (spelerNaamDisplay == "Spelernaam:") {
       spelerNaamDisplay = voerNaamSpelerIn();
     }
-    // Vragen om computer-naam als deze niet al is ingesteld.
+    // vragen om computer-naam als deze niet al is ingesteld.
      if (computerNaamDisplay == "CPU: ") {
       computerNaamDisplay = voerNaamComputerIn();
    }
-      //invoer van speler koppelen aan de betreffende knoppen
-      let spelerInvoer = e.target.innerText;
-      // Functie berekend een willekeurige getal tussen 0 en 1
+      // invoer van speler koppelen aan de betreffende knoppen
+      if (e.type == 'click') {
+      spelerInvoer = e.target.value;
+    } else if (e.type == 'keydown') {
+      console.log(e.key);
+    } else console.log("gaat iets fout");
+
+      // functie berekend een willekeurige getal tussen 0 en 1
       let cpuInvoer = Math.random();
 
       // verdeling van CPU invoer adh van random() resultaat
       if (cpuInvoer < .20){
-          cpuInvoer = 'Steen';
+          cpuInvoer = 'steen';
       } else if (cpuInvoer <= .40){
-          cpuInvoer = 'Papier';
+          cpuInvoer = 'papier';
         } else if (cpuInvoer <= .60){
-            cpuInvoer = 'Hagedis';
+            cpuInvoer = 'hagedis';
         } else if (cpuInvoer <= .80){
-            cpuInvoer = 'Spock';
+            cpuInvoer = 'spock';
         } else {
-          cpuInvoer = 'Schaar';
+          cpuInvoer = 'schaar';
       }
 
+      // game in uitvoering
       // Functie om de invoeren te vergelijken en winnaar te bepalen.
       let result = checkWinner(spelerInvoer, cpuInvoer);
 
       //Hoe en welke uitslage weer te geven
       if (result === spelerNaamDisplay){
-          berichtInvoerID.classList.add("p-3", "mb-2", "bg-success", "text-white");
+          berichtInvoerID.classList.add("bg-success", "text-white");
           result += ' is de winnaar';
           winnaarScores[0]++;
       }
 
       if (result === computerNaamDisplay){
-          berichtInvoerID.classList.add("p-3", "mb-2", "bg-danger", "text-white");
+          berichtInvoerID.classList.add("bg-danger", "text-white");
           result += ' is de winnaar';
           winnaarScores[1]++;
       }
 
       if (result === 'Gelijkspel'){
-          berichtInvoerID.classList.add("p-3", "mb-2", "bg-info");
+          berichtInvoerID.classList.add("bg-info");
           result += ', er is geen winnaar'
       }
 
+      // post-game routine
       //score weergeven in de betreffende score div
       score.innerHTML =  spelerNaamDisplay + " " + winnaarScores[0]
       + ": " + computerNaamDisplay + " " + winnaarScores[1];
@@ -121,38 +171,38 @@
           return 'Gelijkspel';
       }
 
-      if (Speler === 'Steen'){
-          if(CPU === 'Papier' || CPU === 'Spock'){
+      if (Speler === 'steen'){
+          if(CPU === 'papier' || CPU === 'spock'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
           }
       }
 
-      if (Speler === 'Papier'){
-          if (CPU === 'Schaar' || CPU === 'Hagedis'){
+      if (Speler === 'papier'){
+          if (CPU === 'schaar' || CPU === 'hagedis'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
           }
       }
 
-      if (Speler === 'Schaar'){
-          if (CPU === 'Steen' || CPU === 'Spock'){
+      if (Speler === 'schaar'){
+          if (CPU === 'steen' || CPU === 'spock'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
           }
       }
-      if (Speler === 'Hagedis'){
-          if (CPU === 'Steen' || CPU === "Schaar"){
+      if (Speler === 'hagedis'){
+          if (CPU === 'steen' || CPU === "schaar"){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
           }
       }
-      if (Speler === 'Spock'){
-          if (CPU === 'Papier' || CPU === "Hagedis"){
+      if (Speler === 'spock'){
+          if (CPU === 'papier' || CPU === "hagedis"){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
