@@ -8,8 +8,8 @@
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
 
   // Voor ontwikkeldoeleinden, verwijder voor productie
-  spelerNaamDisplay = "Arjan";
-  computerNaamDisplay = "Computernaam";
+  // spelerNaamDisplay = "Arjan";
+  // computerNaamDisplay = "Computernaam";
 
   // berichtInvoerID
   let berichtInvoerID = document.getElementById("berichtInvoerID");
@@ -31,7 +31,7 @@ function fn () {
     //Verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
     // wordt pas ná de eerste keer uitgevoerd
     berichtInvoerID.classList.remove("bg-success", "text-white");
-    berichtInvoerID.classList.remove("bg-info", "text-white");
+    berichtInvoerID.classList.remove("bg-info");
     berichtInvoerID.classList.remove("bg-danger", "text-white");
 
      // Vragen om naam als deze niet al is ingesteld.
@@ -48,11 +48,15 @@ function fn () {
       let cpuInvoer = Math.random();
 
       //als waarde < 34, CPU selects Steen <= Steen en de rest schaar
-      if (cpuInvoer < .34){
+      if (cpuInvoer < .20){
           cpuInvoer = 'Steen';
-      } else if (cpuInvoer <= .67){
+      } else if (cpuInvoer <= .40){
           cpuInvoer = 'Papier';
-      } else {
+        } else if (cpuInvoer <= .60){
+            cpuInvoer = 'Hagedis';
+        } else if (cpuInvoer <= .80){
+            cpuInvoer = 'Spock';
+        } else {
           cpuInvoer = 'Schaar';
       }
 
@@ -74,7 +78,7 @@ function fn () {
       }
 
       if (result === 'Gelijkspel'){
-          berichtInvoerID.classList.add("p-3", "mb-2", "bg-info", "text-white");
+          berichtInvoerID.classList.add("p-3", "mb-2", "bg-info");
           result += ', er is geen winnaar'
       }
 
@@ -112,7 +116,7 @@ function fn () {
       }
 
       if (Speler === 'Steen'){
-          if(CPU === 'Papier'){
+          if(CPU === 'Papier' || CPU === 'Spock'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
@@ -120,7 +124,7 @@ function fn () {
       }
 
       if (Speler === 'Papier'){
-          if (CPU === 'Schaar'){
+          if (CPU === 'Schaar' || CPU === 'Hagedis'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
@@ -128,10 +132,24 @@ function fn () {
       }
 
       if (Speler === 'Schaar'){
-          if (CPU === 'Steen'){
+          if (CPU === 'Steen' || CPU === 'Spock'){
               return computerNaamDisplay;
           } else {
               return spelerNaamDisplay;
           }
       }
-  }
+      if (Speler === 'Hagedis'){
+          if (CPU === 'Steen' || CPU === "Schaar"){
+              return computerNaamDisplay;
+          } else {
+              return spelerNaamDisplay;
+          }
+      }
+      if (Speler === 'Spock'){
+          if (CPU === 'Papier' || CPU === "Hagedis"){
+              return computerNaamDisplay;
+          } else {
+              return spelerNaamDisplay;
+          }
+      }
+  } // einde functie
