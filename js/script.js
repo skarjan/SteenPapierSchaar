@@ -1,4 +1,4 @@
-  //  Variablen waar alle functies bij kunnen.
+  //  Globale Variablen waar alle functies bij kunnen.
   const berichtInvoer = document.querySelector('.berichtInvoer');
   const bericht = document.querySelector('.bericht');
   const score = document.querySelector('.score');
@@ -6,28 +6,31 @@
   const winnaarScores = [0,0];
   let spelerNaamDisplay = document.getElementById("spelerNaam").innerHTML;
   let computerNaamDisplay = document.getElementById("computerNaam").innerHTML;
+  // uitslag word gekoppeld aan een html element om weer te geven
+  let berichtInvoerID = document.getElementById("berichtInvoerID");
+  let realScoreID = document.getElementById("realScoreID");
 
   // Voor ontwikkeldoeleinden, verwijder voordat je live gaat 8-)
   spelerNaamDisplay = "Arjan";
   computerNaamDisplay = "Computernaam";
 
-  // uitslag word gekoppeld aan een html element om weer te geven
-  let berichtInvoerID = document.getElementById("berichtInvoerID");
 
   //event listeners toevoegen aan invoer knoppen
   for ( let i = 0 ; i < buttons.length ; i++){
       buttons[i].addEventListener('click', playGame);
   }
-  // keyboard input control
-document.addEventListener('keydown', fn)
-// keydown functie
-function fn () {
-  console.log("test");
-}
+//   // keyboard input control
+// document.addEventListener('keydown', fn)
+// // keydown functie
+// function fn () {
+//   console.log("test");
+// }
 
 
 
   function playGame(e)  {
+    // update score
+
     //Verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
     // wordt pas ná de eerste keer uitgevoerd
     berichtInvoerID.classList.remove("bg-success", "text-white");
@@ -85,6 +88,18 @@ function fn () {
       //score weergeven in de betreffende score div
       score.innerHTML =  spelerNaamDisplay + " " + winnaarScores[0]
       + ": " + computerNaamDisplay + " " + winnaarScores[1];
+
+      let realScore = (winnaarScores[0] - winnaarScores[1])*3;
+
+      if (realScore  <= -1) {
+        realScoreID.innerHTML = "Score: 0";
+      } else {
+        realScoreID.innerHTML = "Score: "+realScore;
+      }
+
+
+
+
 
       //weergeven wat speler en CPU hebben ingevoerd
 
