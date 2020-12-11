@@ -1,3 +1,9 @@
+# 0.7.2 TBD Update (Layout OVERHAUL)
+
+## Notes
+
+Complete layout overhaul.
+
 # 0.7.1 Aangepaste Namen Update
 
 ## Notities 
