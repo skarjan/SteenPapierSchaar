@@ -64,16 +64,16 @@ function determineClickAction (e) {
 } // einde functie
 
   function playGame(e)  {
-    
+
     // pre-game routine: klasses verwijderen van de resultaten,
     // kijken of er al namen zijn ingesteld, vastleggen van de speler invoer,
     // generen van een cpu invoer. Daarna start de game
 
-    // verwijderd de kleur van de vorige uitslag winst/verlies/gelijk
+    // verwijderd de kleur en animaties van de vorige uitslag winst/verlies/gelijk
     // wordt pas ná de eerste keer uitgevoerd
-    berichtInvoerID.classList.remove("bg-success", "text-white");
+    berichtInvoerID.classList.remove("bg-success", "text-white", 'animate__animated', 'animate__pulse');
     berichtInvoerID.classList.remove("bg-info");
-    berichtInvoerID.classList.remove("bg-danger", "text-white");
+    berichtInvoerID.classList.remove("bg-danger", "text-white", 'animate__animated', 'animate__headShake');
 
      // kijken of er al namen zijn ingesteld
       if (spelerNaamDisplay == "Spelernaam:") {
@@ -112,13 +112,13 @@ function determineClickAction (e) {
 
       //Hoe en welke uitslage weer te geven
       if (result === spelerNaamDisplay){
-          berichtInvoerID.classList.add("bg-success", "text-white");
+          berichtInvoerID.classList.add("bg-success", "text-white", 'animate__animated', 'animate__pulse');
           result += ' is de winnaar';
           winnaarScores[0]++;
       }
 
       if (result === computerNaamDisplay){
-          berichtInvoerID.classList.add("bg-danger", "text-white");
+          berichtInvoerID.classList.add("bg-danger", "text-white", 'animate__animated', 'animate__headShake');
           result += ' is de winnaar';
           winnaarScores[1]++;
       }
