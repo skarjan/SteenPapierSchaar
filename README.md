@@ -1,4 +1,4 @@
-# 0.8.5 Keyboard supporrt added
+# 0.8.5 Keyboard support added
 
 See commits for more info. 
 
