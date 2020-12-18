@@ -58,8 +58,15 @@ function determineClickAction (e) {
     playGame(e);
   } else if (buttonValue == "thema") {
     console.log("theme succes");
-  } else {
-    return alert("Dit gaat fout...");
+  } else if (buttonValue == "nameChange") {
+    spelerNaamDisplay = voerNaamSpelerIn();
+    score.innerHTML = spelerNaamDisplay + " " + winnaarScores[0]
+    + ": " + computerNaamDisplay + " " + winnaarScores[1];
+  } else if (buttonValue == "nameChangeCPU") {
+    computerNaamDisplay = voerNaamComputerIn();
+    score.innerHTML = spelerNaamDisplay + " " + winnaarScores[0]
+    + ": " + computerNaamDisplay + " " + winnaarScores[1];
+    console.log("dit gaat goed!...")
   }
 } // einde functie
 
