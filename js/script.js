@@ -57,6 +57,7 @@ function determineClickAction (e) {
       buttonValue == "hagedis") {
     playGame(e);
   } else if (buttonValue == "thema") {
+    changeTheme()
     console.log("theme succes");
   } else if (buttonValue == "nameChange") {
     spelerNaamDisplay = voerNaamSpelerIn();
@@ -217,6 +218,14 @@ function determineClickAction (e) {
           }
       }
   } // einde functie
+
+  // thema functie
+function changeTheme(){
+  let element = document.getElementById("NavThemeID");
+
+  element.classList.remove("bg-dark", "navbar-dark");
+  element.classList.add("bg-secondary", "navbar-light");
+}
 
 // function om de animaties te verwijderen bij het einde van een animatie
 function removeAnimation (e) {
